@@ -3,20 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/song_navigation"
-    app:startDestination="@id/songListFragment">
+    app:startDestination="@id/albumListFragment">
 
-    <fragment
-        android:id="@+id/songListFragment"
-        android:name="com.example.enigmamusicplayer.fragments.SongListFragment"
-        android:label="fragment_song_list"
-        tools:layout="@layout/fragment_song_list" >
-        <action
-            android:id="@+id/action_songListFragment_to_addSongFragment"
-            app:destination="@id/addSongFragment" />
-        <action
-            android:id="@+id/action_songListFragment_to_songDetailsFragment"
-            app:destination="@id/songDetailsFragment" />
-    </fragment>
     <fragment
         android:id="@+id/addSongFragment"
         android:name="com.example.enigmamusicplayer.fragments.AddSongFragment"
@@ -29,8 +17,36 @@
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/songDetailsFragment"
-        android:name="com.example.enigmamusicplayer.fragments.SongDetailsFragment"
-        android:label="fragment_song_details"
-        tools:layout="@layout/fragment_song_details" />
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.enigmamusicplayer.fragments.AlbumDetailFragment"
+        android:label="fragment_album_detail"
+        tools:layout="@layout/fragment_album_detail" >
+        <action
+            android:id="@+id/action_albumDetailFragment_to_addSongFragment"
+            app:destination="@id/addSongFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAlbumFragment"
+        android:name="com.example.enigmamusicplayer.fragments.AddAlbumFragment"
+        android:label="fragment_add_album"
+        tools:layout="@layout/fragment_add_album" >
+        <action
+            android:id="@+id/action_addAlbumFragment_pop"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/addAlbumFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/albumListFragment"
+        android:name="com.example.enigmamusicplayer.fragments.AlbumListFragment"
+        android:label="fragment_album_list"
+        tools:layout="@layout/fragment_album_list" >
+        <action
+            android:id="@+id/action_albumListFragment_to_addAlbumFragment"
+            app:destination="@id/addAlbumFragment" />
+        <action
+            android:id="@+id/action_albumListFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
 </navigation>

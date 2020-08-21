@@ -10,19 +10,18 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.enigmamusicplayer.R
-import com.example.enigmamusicplayer.recycleadapter.SongRecycleAdapter
-import com.example.enigmamusicplayer.viewmodel.SongViewModel
-import kotlinx.android.synthetic.main.fragment_song_list.*
+import com.example.enigmamusicplayer.recycleadapter.AlbumRecycleAdapter
+import com.example.enigmamusicplayer.viewmodel.AlbumViewModel
+import kotlinx.android.synthetic.main.fragment_album_list.*
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SongListFragment.newInstance] factory method to
+ * Use the [AlbumListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SongListFragment : Fragment() {
+class AlbumListFragment : Fragment() {
 
-    private val songViewModel by activityViewModels<SongViewModel>()
-
+    private val songViewModel by activityViewModels<AlbumViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -32,19 +31,20 @@ class SongListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_song_list, container, false)
+        return inflater.inflate(R.layout.fragment_album_list, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         songListRecycleView.layoutManager = LinearLayoutManager(activity)
-        songViewModel.getSongs().observe(viewLifecycleOwner, Observer {
-            songListRecycleView.adapter = SongRecycleAdapter(it, activity)
+        songViewModel.getAllAlbum().observe(viewLifecycleOwner, Observer {
+            songListRecycleView.adapter = AlbumRecycleAdapter(it, activity)
         })
 
-        addSongButton.setOnClickListener {
+        addAlbumButton.setOnClickListener {
             Navigation.findNavController(view)
-                .navigate(R.id.action_songListFragment_to_addSongFragment)
+                .navigate(R.id.action_albumListFragment_to_addAlbumFragment)
         }
     }
 

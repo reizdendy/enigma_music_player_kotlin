@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.AddSongFragment">
+    tools:context=".fragments.AddAlbumFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -27,28 +27,38 @@
             android:layout_margin="20dp">
 
             <EditText
-                android:id="@+id/inputSongTitle"
+                android:id="@+id/inputArtistName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:textSize="25dp"
-                android:hint="Song Title"
+                android:hint="Artist Name"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/inputSongDuration"
+                android:id="@+id/inputAlbumName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
                 android:ems="10"
-                android:hint="Song Duration"
+                android:hint="Album Title"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/inputImageUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="25dp"
+                android:hint="Album Image"
+                android:layout_marginBottom="0dp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonSubmitNewSong"
+        android:id="@+id/buttonSubmitNewAlbum"
         app:cornerRadius="20dp"
         android:layout_width="375dp"
         android:layout_height="wrap_content"

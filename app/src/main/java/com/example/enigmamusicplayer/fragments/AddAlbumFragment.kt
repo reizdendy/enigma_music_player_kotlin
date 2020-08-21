@@ -8,18 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.enigmamusicplayer.R
-import com.example.enigmamusicplayer.room.album.Song
+import com.example.enigmamusicplayer.room.album.Album
 import com.example.enigmamusicplayer.viewmodel.AlbumViewModel
-import kotlinx.android.synthetic.main.fragment_add_song.*
-
+import kotlinx.android.synthetic.main.fragment_add_album.*
 
 /**
  * A simple [Fragment] subclass.
- * Use the [AddSongFragment.newInstance] factory method to
+ * Use the [AddAlbumFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AddSongFragment : Fragment() {
-
+class AddAlbumFragment : Fragment() {
     private val albumViewModel by activityViewModels<AlbumViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,29 +29,25 @@ class AddSongFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_song, container, false)
+        return inflater.inflate(R.layout.fragment_add_album, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val albumId = arguments?.getInt("album_id") ?: 1
-        buttonSubmitNewSong.setOnClickListener {
-            val title = inputSongTitle.text.toString()
-            val duration = inputSongDuration.text.toString()
+        buttonSubmitNewAlbum.setOnClickListener {
+            val title = inputAlbumName.text.toString()
+            val artist = inputArtistName.text.toString()
+            val imageUrl = inputImageUrl.text.toString()
 
-            if (title == "" || duration == "") {
+            if (title == "" || artist == "" || imageUrl == "" ){
                 return@setOnClickListener
             }
 
-            albumViewModel.insertNewSong(
-                Song(
-                    song_title = title,
-                    song_duration = duration,
-                    song_album_id = albumId
-                )
-            )
-            Navigation.findNavController(view).navigate(R.id.action_addSongFragment_pop)
+            val newAlbum = Album(album_title = title,artist =  artist,album_img_url =  imageUrl)
+            albumViewModel.createNewAlbum(newAlbum)
+
+            Navigation.findNavController(view).navigate(R.id.action_addAlbumFragment_pop)
         }
     }
 
